@@ -1,22 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Understanding Corruption in Malawi</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Corruption in Malawi | Empower-Online</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app-container">
-        <!-- JS State Machine Injects Content Here -->
-    </div>
-    
-    <!-- Audio Narration Hook -->
-    <audio id="narrator-audio" style="display:none;"></audio>
-    <!-- Synthetic System Alert Hook -->
-    <audio id="alert-audio" style="display:none;" src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU"></audio>
+  <div class="app-shell">
 
-    <script src="app.js"></script>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">E</div>
+        <div>
+          <div class="brand-name">EMPOWER<span>-ONLINE</span></div>
+          <div class="brand-sub">Professional Learning</div>
+        </div>
+      </div>
+      <div class="course-title">Understanding Corruption in Malawi</div>
+      <div class="top-actions">
+        <button class="icon-btn" aria-label="Help">?</button>
+        <div class="avatar">LM</div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-heading">COURSE CONTENT</div>
+        <div class="progress-card">
+          <div class="progress-row"><span>Your progress</span><strong id="progressText">0%</strong></div>
+          <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+          <div class="progress-note">Complete each activity to progress.</div>
+        </div>
+        <nav id="moduleNav"></nav>
+        <div class="sidebar-footer">
+          <div class="status-dot"></div>
+          <span>Course in progress</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="breadcrumb"><span>My Courses</span><b>›</b><span>Governance &amp; Ethics</span><b>›</b><strong>Understanding Corruption in Malawi</strong></div>
+
+        <section id="courseView" class="content-area"></section>
+
+        <footer class="course-footer">
+          <span>Empower-Online • Learning that leads to action</span>
+          <span>© Course materials</span>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <audio id="narratorAudio"></audio>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
 </body>
 </html>
