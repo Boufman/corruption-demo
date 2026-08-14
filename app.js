@@ -1,760 +1,432 @@
-// ============================================================
-// UNDERSTANDING CORRUPTION IN MALAWI
-// Full interactive course – every word from the source PowerPoint
-// ============================================================
-
-const courseData = [
-    {
-        type: 'intro',
-        title: 'UNDERSTANDING CORRUPTION IN MALAWI',
-        content: 'This is a demo version of a 7-module course on Understanding Corruption in Malawi that every Malawian needs to attend. Both the content and the quizzes in this demo version are real and will test your knowledge of corruption. It is designed to help you appreciate how Empower-Online delivers this training.',
-        audioFile: 'audio/01_intro.mp3'
-    },
-    {
-        type: 'list',
-        title: 'WELCOME TO THE COURSE ON UNDERSTANDING CORRUPTION IN MALAWI',
-        content: 'After this Online course, you will be able to:',
-        items: [
-            'Explain what is corruption and what forms it takes.',
-            'Recognize the signs of possible corruption.',
-            'Explain the Causes and Effects of Corruption.',
-            'Describe how to prevent corruption.'
-        ],
-        audioFile: 'audio/02_welcome.mp3'
-    },
-    {
-        type: 'definition',
-        title: 'WHAT IS CORRUPTION?',
-        content: [
-            'Corruption is the abuse of entrusted power for private gain.',
-            'It occurs whenever an individual uses public or private authority to obtain benefits that are not legally or ethically deserved.'
-        ],
-        audioFile: 'audio/03_forms_of_corruption.mp3'
-    },
-    {
-        type: 'list',
-        title: 'WHAT ARE THE COMMON FORMS OF CORRUPTION?',
-        content: 'Forms of corruption include:',
-        items: [
-            'Bribery',
-            'Embezzlement',
-            'Fraud',
-            'Nepotism',
-            'Abuse of Office',
-            'Procurement Fraud',
-            'Conflict of Interest',
-            'Extortion',
-            'Vote buying'
-        ]
-    },
-    {
-        type: 'list',
-        title: 'WHAT ARE THE COMMON CAUSES OF CORRUPTION?',
-        content: 'Common causes include:',
-        items: [
-            'Weak accountability',
-            'Low salaries',
-            'Political patronage',
-            'Weak law enforcement',
-            'Poverty',
-            'Lack of transparency',
-            'Poor procurement systems',
-            'Cultural acceptance of gift-giving',
-            'Limited citizen oversight'
-        ]
-    },
-    { type: 'diagnostic1' },
-    { type: 'diagnostic2' },
-    {
-        type: 'effects',
-        title: 'EFFECTS OF CORRUPTION',
-        content: 'Corruption can lead to:',
-        sections: [
-            {
-                heading: 'SOCIAL EFFECTS',
-                items: [
-                    'Poor healthcare',
-                    'Poor education',
-                    'Increased inequality',
-                    'Loss of public trust'
-                ]
-            },
-            {
-                heading: 'ECONOMIC EFFECTS',
-                items: [
-                    'Reduced investment',
-                    'Increased public debt',
-                    'Misuse of taxpayer money',
-                    'Poor infrastructure'
-                ]
-            },
-            {
-                heading: 'POLITICAL EFFECTS',
-                items: [
-                    'Weak democracy',
-                    'Electoral fraud',
-                    'Reduced confidence in government',
-                    'Poor governance'
-                ]
-            }
-        ]
-    },
-    {
-        type: 'prevention',
-        title: 'PREVENTING CORRUPTION',
-        content: 'To prevent corruption:',
-        sections: [
-            {
-                heading: 'Individual Actions',
-                items: [
-                    'Refusal to pay bribes',
-                    'Report suspected corruption',
-                    'Keep financial records',
-                    'Demand receipts',
-                    'Follow procurement rules'
-                ]
-            },
-            {
-                heading: 'Organizational Actions',
-                items: [
-                    'Internal audits',
-                    'Whistleblower protection',
-                    'Transparent procurement',
-                    'Ethics training',
-                    'Asset declaration',
-                    'Conflict-of-interest'
-                ]
-            }
-        ]
-    },
-    { type: 'dnd' },
-    { type: 'exercise4' },
-    {
-        type: 'modules',
-        title: 'UNDERSTANDING CORRUPTION IN MALAWI',
-        content: 'The full course covers the following modules:',
-        items: [
-            'Rethinking Corruption',
-            'Values and Corruption',
-            'Systems that encourage Corruption',
-            'Personal Integrity under Pressure',
-            'Culture versus Ethics in Corruption',
-            'Justifying Corruption',
-            'From Awareness to Action'
-        ]
-    }
+const modules = [
+  {id:1,title:"Course introduction",type:"intro"},
+  {id:2,title:"Course outcomes",type:"outcomes"},
+  {id:3,title:"What is corruption?",type:"definition"},
+  {id:4,title:"Forms and causes",type:"forms_causes"},
+  {id:5,title:"Effects and prevention",type:"effects_prevention"},
+  {id:6,title:"Practical Exercises 1 & 2",type:"scenario1"},
+  {id:7,title:"Practical Exercises 3 & 4",type:"scenario2"},
+  {id:8,title:"End-of-module quiz",type:"quiz"}
 ];
 
 const quizData = [
-    {
-        question: '1. What is Corruption?',
-        options: [
-            'a. Making profits illegally',
-            'b. Abuse of entrusted power for private gain',
-            'c. Paying taxes',
-            'd. Managing public resources'
-        ],
-        correctAnswer: 1
-    },
-    {
-        question: '2. Nepotism involves',
-        options: [
-            'a. Paying taxes',
-            'b. Auditing finances',
-            'c. Community participation',
-            'd. Hiring family or friends unfairly'
-        ],
-        correctAnswer: 3
-    },
-    {
-        question: '3. What is an example of bribery?',
-        options: [
-            'a. Winning a contract fairly',
-            'b. Paying money to influence a public official',
-            'c. Attending a meeting',
-            'd. Declaring assets'
-        ],
-        correctAnswer: 1
-    },
-    {
-        question: '4. Which is a consequence of corruption?',
-        options: [
-            'a. Improved investor confidence',
-            'b. Better governance',
-            'c. Misuse of public resources',
-            'd. Lower inequality'
-        ],
-        correctAnswer: 2
-    },
-    {
-        question: '5. Which of the following best demonstrates transparency?',
-        options: [
-            'a. Secret procurement',
-            'b. Public disclosure of procurement process',
-            'c. Destroying financial records',
-            'd. Awarding contracts without competition'
-        ],
-        correctAnswer: 1
-    },
-    {
-        question: '6. Which institution is responsible for investigating corruption in Malawi?',
-        options: [
-            'a. Ministry of Tourism',
-            'b. Parliament only',
-            'c. Anti-corruption Bureau',
-            'd. Immigration Department'
-        ],
-        correctAnswer: 2
-    },
-    {
-        question: '7. Which practice helps prevent corruption?',
-        options: [
-            'a. Keeping accurate financial records',
-            'b. Ignoring procurement procedures',
-            'c. Hiding information',
-            'd. Accepting gifts from bidders'
-        ],
-        correctAnswer: 0
-    },
-    {
-        question: '8. Which is NOT considered corruption?',
-        options: [
-            'a. Extortion',
-            'b. Fraud',
-            'c. Merit-based recruitment through a fair process',
-            'd. Embezzlement'
-        ],
-        correctAnswer: 2
-    },
-    {
-        question: '9. Why is accountability important?',
-        options: [
-            'a. It increased opportunities for bribery',
-            'b. It prevents audits',
-            'c. It reduces transparency',
-            'd. It helps ensure people are answerable for their actions'
-        ],
-        correctAnswer: 3
-    },
-    {
-        question: '10. What is the most effective long-term strategy against corruption?',
-        options: [
-            'a. Building a culture of integrity supported by strong institutions and active citizens',
-            'b. Ignoring complaints',
-            'c. Reducing financial oversight',
-            'd. Keeping government decisions secret'
-        ],
-        correctAnswer: 0
-    }
+  {q:"What is Corruption?", options:["a. Making profits illegally","b. Abuse of entrusted power for private gain","c. Paying taxes","d. Managing public resources"], correct:1, feedback:"Answer: B"},
+  {q:"2. Nepotism involves", options:["a. Paying taxes","b. Auditing finances","c. Community participation","d. Hiring family or friends unfairly"], correct:3, feedback:"Answer: D"},
+  {q:"3. What is an example of bribery?", options:["a. Winning a contract fairly","b. Paying money to influence a public official","c. Attending a meeting","d. Declaring assets"], correct:1, feedback:"Answer: B"},
+  {q:"4. Which is a consequence of corruption?", options:["a. Improved investor confidence","b. Better governance","c. Misuse of public resources","d. Lower inequality"], correct:2, feedback:"Answer: C"},
+  {q:"5. Which of the following best demonstrates transparency?", options:["a. Secret procurement","b. Public disclosure of procurement process","c. Destroying financial records","d. Awarding contracts without competition"], correct:1, feedback:"Answer: B"},
+  {q:"6. Which institution is responsible for investigating corruption in Malawi?", options:["a. Ministry of Tourism","b. Parliament only","c. Anti-corruption Bureau","d. Immigration Department"], correct:2, feedback:"Answer: C"},
+  {q:"7. Which practice helps prevent corruption?", options:["a. Keeping accurate finding records","b. Ignoring procurement procedures","c. Hiding information","d. Accepting gifts from bidders"], correct:0, feedback:"Answer: A"},
+  {q:"8. Which is NOT considered corruption?", options:["a. Extortion","b. Fraud","c. Merit-based recruitment through a fair process","d. Embezzlement"], correct:2, feedback:"Answer: C"},
+  {q:"9. Why is accountability important?", options:["a. It increased opportunities for bribery","b. It prevents audits","c. It reduces transparency","d. It helps ensure people are answerable for their people"], correct:3, feedback:"Answer: D"},
+  {q:"10. What is the most effective long-term strategy against corruption?", options:["a. Building a culture of integrity supported by strong institutions and active citizens","b. Ignoring complaints","c. Reducing financial oversight","d. Keeping government decisions secret"], correct:0, feedback:"Answer: A"}
 ];
 
-// ============================================================
-// STATE
-// ============================================================
-let currentSlide = 0;
-let currentQuizQuestion = 0;
-let questionAttempts = 0;
-let isQuizMode = false;
+let currentModule = 1;
+let completed = new Set();
+let quizIndex = 0;
+let quizScore = 0;
 
-const appContainer = document.getElementById('app-container');
-const audioPlayer = document.getElementById('narrator-audio');
+const view = document.getElementById("courseView");
+const nav = document.getElementById("moduleNav");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const audio = document.getElementById("narratorAudio");
 
-// ============================================================
-// CORE RENDER
-// ============================================================
-function renderSlide() {
-    appContainer.innerHTML = '';
-    appContainer.className = ''; // reset any previous classes
-
-    if (isQuizMode) {
-        renderQuiz();
-        return;
-    }
-
-    const slide = courseData[currentSlide];
-    if (!slide) return;
-
-    // Special interactive types
-    if (slide.type === 'diagnostic1') {
-        renderDiagnosticOne();
-        return;
-    }
-    if (slide.type === 'diagnostic2') {
-        renderDiagnosticTwo();
-        return;
-    }
-    if (slide.type === 'dnd') {
-        renderDragAndDropExercise();
-        return;
-    }
-    if (slide.type === 'exercise4') {
-        renderExerciseFour();
-        return;
-    }
-
-    // Audio
-    if (slide.audioFile) {
-        audioPlayer.src = slide.audioFile;
-        audioPlayer.play().catch(() => {}); // silent fail if no file
-    }
-
-    let html = `
-        <div class="slide-header">
-            <div class="audio-active"></div>
-            <span class="audio-label">Audio Playing</span>
-        </div>
-        <h1>${slide.title}</h1>
-    `;
-
-    if (slide.type === 'definition' && Array.isArray(slide.content)) {
-        slide.content.forEach(para => {
-            html += `<p>${para}</p>`;
-        });
-    } else if (slide.content && typeof slide.content === 'string') {
-        html += `<p>${slide.content}</p>`;
-    }
-
-    // Simple list
-    if (slide.type === 'list' && slide.items) {
-        html += '<ul class="content-list">';
-        slide.items.forEach(item => {
-            html += `<li>• ${item}</li>`;
-        });
-        html += '</ul>';
-    }
-
-    // Effects / Prevention multi-section
-    if ((slide.type === 'effects' || slide.type === 'prevention') && slide.sections) {
-        html += '<div class="sections-grid">';
-        slide.sections.forEach(sec => {
-            html += `
-                <div class="section-card">
-                    <h3 class="section-heading">${sec.heading}</h3>
-                    <ul class="content-list">
-                        ${sec.items.map(i => `<li>• ${i}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
-        });
-        html += '</div>';
-    }
-
-    // Modules list
-    if (slide.type === 'modules' && slide.items) {
-        html += '<ol class="modules-list">';
-        slide.items.forEach((item, idx) => {
-            html += `<li><span class="module-num">${idx + 1}</span> ${item}</li>`;
-        });
-        html += '</ol>';
-        html += `
-            <div class="cta-box">
-                <button class="btn btn-primary" onclick="startQuiz()">Start End-of-Module Quiz</button>
-            </div>
-        `;
-    } else {
-        html += `<button class="btn" onclick="nextSlide()">Continue</button>`;
-    }
-
-    appContainer.innerHTML = html;
+function renderNav(){
+  nav.innerHTML = modules.map(m => `
+    <button class="module-item ${m.id===currentModule?"active":""} ${completed.has(m.id)?"complete":""}" onclick="goTo(${m.id})">
+      <span class="module-number">${completed.has(m.id)?"✓":m.id}</span>
+      <span class="module-label">${m.title}</span>
+    </button>`).join("");
+  const pct = Math.round((completed.size / modules.length) * 100);
+  progressBar.style.width = pct + "%";
+  progressText.textContent = pct + "%";
+}
+function markComplete(id){
+  completed.add(id);
+  renderNav();
+}
+function goTo(id){
+  currentModule=id;
+  renderNav();
+  renderCurrent();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function next(){
+  markComplete(currentModule);
+  if(currentModule < modules.length) goTo(currentModule+1);
+  else renderCurrent();
+}
+function audioPanel(file){
+  return `<div class="audio-panel">
+    <span class="audio-badge">COURSE AUDIO</span>
+    <audio controls autoplay src="${file}"></audio>
+  </div>`;
+}
+function pageHead(eyebrow,title,lead,meta=""){
+  return `<div class="page-head">
+    <div class="eyebrow">${eyebrow}</div>
+    <h1>${title}</h1>
+    <p class="lead">${lead}</p>
+    ${meta ? `<div class="meta-row">${meta}</div>`:""}
+  </div>`;
+}
+function renderCurrent(){
+  const m=modules[currentModule-1];
+  if(m.type==="intro") renderIntro();
+  if(m.type==="outcomes") renderOutcomes();
+  if(m.type==="definition") renderDefinition();
+  if(m.type==="forms_causes") renderFormsCauses();
+  if(m.type==="effects_prevention") renderEffectsPrevention();
+  if(m.type==="scenario1") renderScenario1();
+  if(m.type==="scenario2") renderScenario2();
+  if(m.type==="quiz") renderQuiz();
 }
 
-function nextSlide() {
-    currentSlide++;
-    if (currentSlide >= courseData.length) {
-        // Should not normally reach here – modules slide starts quiz
-        isQuizMode = true;
-        currentQuizQuestion = 0;
-        questionAttempts = 0;
+function renderIntro(){
+  view.innerHTML = pageHead("COURSE OVERVIEW","UNDERSTANDING CORRUPTION IN MALAWI",
+    "This is a demo version of a 7-module course on Understanding Corruption in Malawi that every Malawian needs to attend.",
+    `<span><strong>Format:</strong> Online self-paced</span><span><strong>Modules:</strong> 8</span><span><strong>Activities:</strong> Scenarios + assessment</span>`) + `
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000&auto=format&fit=crop" style="width: 100%; height: 250px; object-fit: cover; border-radius: 6px; margin-bottom: 20px;" alt="Course Introduction Image" />
+      <h2>WELCOME TO THE COURSE ON UNDERSTANDING CORRUPTION IN MALAWI</h2>
+      <p style="font-size:13px;line-height:1.7;color:#596b76;margin-bottom:20px;">Both the content and the quizzes in this demo version are real and will test your knowledge of corruption. It is designed to help you appreciate how Empower-Online delivers this training.</p>
+      ${audioPanel("audio/01_intro.mp3")}
+    </div>
+    <div class="action-row"><span class="section-note">Estimated study time: self-paced</span><button class="btn" onclick="next()">Start</button></div>`;
+}
+
+function renderOutcomes(){
+  view.innerHTML = pageHead("MODULE 2 · OUTCOMES","Course Outcomes",
+    "Review the key learning objectives for this course.") + `
+    <div class="card">
+      <div style="background-color: #f6d258; padding: 14px 20px; border: 1px solid #486a32; margin-bottom: 20px; border-radius: 4px;">
+        <h2 style="color: #638c41; margin: 0; font-size: 22px; font-weight: bold; letter-spacing: 1px;">After this Online course, you will be able to:</h2>
+      </div>
+      <ul class="clean-list" style="color: #4f802a; font-size: 18px; margin-bottom: 30px; border: none; padding-left: 20px;">
+        <li style="border: none; padding: 6px 0;">1. Explain what is corruption and what forms it takes.</li>
+        <li style="border: none; padding: 6px 0;">2. Recognize the signs of possible corruption.</li>
+        <li style="border: none; padding: 6px 0;">3. Explain the Causes and Effects of Corruption.</li>
+        <li style="border: none; padding: 6px 0;">4. Describe how to prevent corruption.</li>
+      </ul>
+      ${audioPanel("audio/02_welcome.mp3")}
+    </div>
+    <div class="action-row"><span class="section-note">Module 2 of 8</span><button class="btn" onclick="next()">Continue</button></div>`;
+}
+
+function renderDefinition(){
+  view.innerHTML = pageHead("MODULE 3 · FOUNDATIONS","WHAT IS CORRUPTION?",
+    "Before examining specific forms, establish a clear working definition.") + `
+    <div class="card">
+      <ul class="clean-list">
+        <li>1. Corruption is the abuse of entrusted power for private gain.</li>
+        <li>2. It occurs whenever an individual uses public or private authority to obtain benefits that are not legally or ethically deserved.</li>
+      </ul>
+    </div>
+    <div class="action-row"><span class="section-note">Module 3 of 8</span><button class="btn" onclick="next()">Continue</button></div>`;
+}
+
+function renderFormsCauses(){
+  window.mod4FormsClicked = false;
+  window.mod4CausesClicked = false;
+
+  const forms=["1. Bribery","2. Embezzlement","3. Fraud","4. Nepotism","5. Abuse of Office","6. Procurement Fraud","7. Conflict of Interest","8. Extortion","9. Vote buying"];
+  const causes=["1. Weak accountability","2. Low salaries","3. Political patronage","4. Weak law enforcement","5. Poverty","6. Lack of transparency","7. Poor procurement systems","8. Cultural acceptance of gift-giving","9. Limited citizen oversight"];
+  
+  view.innerHTML = pageHead("MODULE 4 · RECOGNITION","Forms and Causes", "") + `
+    <div class="card-grid" style="overflow-x: hidden; padding: 5px;">
+      <div id="formsCard" class="card" style="cursor: pointer; transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); transform: translateX(30px);" onclick="toggleMod4('forms')">
+        <h2 style="display:flex; justify-content:space-between; align-items:center; font-size: 16px; margin:0; pointer-events:none;">
+          <span>WHAT ARE THE COMMON FORMS OF CORRUPTION?</span>
+          <span id="formsIcon" style="transition: transform 0.4s; font-size: 24px; color: var(--blue);">+</span>
+        </h2>
+        <div id="formsContent" style="max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s ease;">
+          <ul class="clean-list" style="margin-left: 0; margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+            ${forms.map(x=>`<li style="padding:4px 0; border:none; font-size:13px;">${x}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+      <div id="causesCard" class="card" style="cursor: pointer; transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); transform: translateX(-30px);" onclick="toggleMod4('causes')">
+        <h2 style="display:flex; justify-content:space-between; align-items:center; font-size: 16px; margin:0; pointer-events:none;">
+          <span>WHAT ARE THE COMMON CAUSES OF CORRUPTION?</span>
+          <span id="causesIcon" style="transition: transform 0.4s; font-size: 24px; color: var(--blue);">+</span>
+        </h2>
+        <div id="causesContent" style="max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s ease;">
+          <ul class="clean-list" style="margin-left: 0; margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+            ${causes.map(x=>`<li style="padding:4px 0; border:none; font-size:13px;">${x}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="action-row">
+      <span class="section-note">Click both panels to expand them and unlock the next module.</span>
+      <button id="mod4Next" class="btn" disabled style="opacity:0.5; cursor:not-allowed;" onclick="next()">Continue</button>
+    </div>`;
+}
+
+window.toggleMod4 = function(type) {
+  const content = document.getElementById(type + 'Content');
+  const card = document.getElementById(type + 'Card');
+  const icon = document.getElementById(type + 'Icon');
+
+  const isExpanded = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
+
+  if (type === 'forms') window.mod4FormsClicked = true;
+  if (type === 'causes') window.mod4CausesClicked = true;
+
+  if (!isExpanded) {
+    content.style.maxHeight = content.scrollHeight + 50 + "px";
+    content.style.opacity = "1";
+    card.style.transform = "translateX(0)"; 
+    icon.style.transform = "rotate(45deg)";
+  } else {
+    content.style.maxHeight = "0px";
+    content.style.opacity = "0";
+    card.style.transform = type === 'forms' ? "translateX(30px)" : "translateX(-30px)";
+    icon.style.transform = "rotate(0deg)";
+  }
+
+  if (window.mod4FormsClicked && window.mod4CausesClicked) {
+    const btn = document.getElementById('mod4Next');
+    if (btn) {
+      btn.disabled = false;
+      btn.style.opacity = "1";
+      btn.style.cursor = "pointer";
     }
-    renderSlide();
+  }
+};
+
+function renderEffectsPrevention(){
+  window.mod5Views = { social: false, economic: false, political: false };
+  
+  view.innerHTML = pageHead("MODULE 5 · IMPACT","Effects and Prevention", "Select the buttons to learn how corruption impacts society.") + `
+    <div id="effectsSection" class="card" style="background: var(--blue); text-align: center;">
+      <h2 style="color: #fff; margin-bottom: 10px;">EFFECTS OF CORRUPTION</h2>
+      <p style="color: #fff; font-size: 13px; margin-bottom: 20px;">Click each category below to view the effects.</p>
+      
+      <div class="icon-triangle">
+        <div class="icon-btn-large" onclick="openMod5Modal('social')">
+          <div class="icon-circle-large" id="icon-social">🏥</div>
+          <div class="icon-label-large">Social Effects</div>
+        </div>
+        <div class="icon-btn-large" onclick="openMod5Modal('economic')">
+          <div class="icon-circle-large" id="icon-economic">📉</div>
+          <div class="icon-label-large">Economic Effects</div>
+        </div>
+        <div class="icon-btn-large" onclick="openMod5Modal('political')">
+          <div class="icon-circle-large" id="icon-political">⚖️</div>
+          <div class="icon-label-large">Political Effects</div>
+        </div>
+      </div>
+      
+      <div style="margin-top:30px; min-height: 40px;">
+        <button id="btnToPrevention" class="btn success" style="display:none; font-size: 14px;" onclick="showPrevention()">Move to Preventing Corruption</button>
+      </div>
+    </div>
+
+    <div id="preventionSection" style="display:none;">
+      <div class="card">
+        <h2>PREVENTING CORRUPTION</h2>
+        <p style="font-size:13px; color:#596b76;">To prevent corruption:</p>
+        <div class="card-grid">
+          <div class="objective"><strong>Individual Actions</strong>❖ Refusal to pay bribes<br>❖ Report suspected corruption<br>❖ Keep financial records<br>❖ Demand receipts<br>❖ Follow procurement rules</div>
+          <div class="objective"><strong>Organizational Actions</strong>❖ Internal audits<br>❖ Whistleblower protection<br>❖ Transparent procurement<br>❖ Ethics training<br>❖ Asset declaration<br>❖ Conflict-of-interest</div>
+        </div>
+      </div>
+      <div class="action-row"><span class="section-note">Module 5 of 8</span><button class="btn" onclick="next()">Continue</button></div>
+    </div>
+
+    <!-- Interactive Graphic Overlay/Modal -->
+    <div id="mod5Modal" class="modal-overlay">
+      <div class="modal-content">
+        <h2 id="mod5ModalTitle" style="color: var(--navy); margin-bottom: 15px;"></h2>
+        <div id="mod5ModalBody" style="font-size: 14px; color: var(--ink);"></div>
+        <button class="btn" style="margin-top:25px; width:100%;" onclick="closeMod5Modal()">Close</button>
+      </div>
+    </div>
+  `;
+}
+
+window.openMod5Modal = function(type) {
+  const title = document.getElementById('mod5ModalTitle');
+  const body = document.getElementById('mod5ModalBody');
+  
+  if(type === 'social') {
+    title.textContent = "SOCIAL EFFECTS";
+    body.innerHTML = '<ul class="clean-list" style="text-align:left;"><li>❖ Poor healthcare</li><li>❖ Poor education</li><li>❖ Increased inequality</li><li>❖ Loss of public trust</li></ul>';
+  } else if(type === 'economic') {
+    title.textContent = "ECONOMIC EFFECTS";
+    body.innerHTML = '<ul class="clean-list" style="text-align:left;"><li>❖ Reduced investment</li><li>❖ Increased public debt</li><li>❖ Misuse of taxpayer money</li><li>❖ Poor infrastructure</li></ul>';
+  } else if(type === 'political') {
+    title.textContent = "POLITICAL EFFECTS";
+    body.innerHTML = '<ul class="clean-list" style="text-align:left;"><li>❖ Weak democracy</li><li>❖ Electoral fraud</li><li>❖ Reduced confidence in government</li><li>❖ Poor governance</li></ul>';
+  }
+  
+  document.getElementById('mod5Modal').classList.add('show');
+  window.mod5Views[type] = true;
+  
+  const icon = document.getElementById('icon-' + type);
+  icon.classList.add('viewed');
+  
+  if(window.mod5Views.social && window.mod5Views.economic && window.mod5Views.political) {
+    document.getElementById('btnToPrevention').style.display = 'inline-block';
+  }
+};
+
+window.closeMod5Modal = function() {
+  document.getElementById('mod5Modal').classList.remove('show');
+};
+
+window.showPrevention = function() {
+  document.getElementById('effectsSection').style.display = 'none';
+  document.getElementById('preventionSection').style.display = 'block';
+};
+
+function renderScenario1(){
+  view.innerHTML = pageHead("MODULE 6 · PRACTICAL ACTIVITY","Practical Exercises 1 & 2", "") + `
+    <div class="card">
+      <div class="scenario"><div class="scenario-label">Practical Exercise 1 — Corruption in Practice</div>
+      <p>You are working in a public institution. Your department is responsible for purchasing goods and services using public money. A supplier offers you money to ensure that their company wins a contract.</p></div>
+      <div class="question" style="font-size:14px; margin-top:10px;">1. Is this corruption?</div>
+      <div class="choice-grid" style="margin-bottom:15px;">
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Yes</button>
+        <button class="choice" onclick="this.style.background='#fbf0f0'">No</button>
+      </div>
+      <div class="question" style="font-size:14px;">2. What form of corruption is involved?</div>
+      <div class="choice-grid">
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Bribery</button>
+        <button class="choice" onclick="this.style.background='#fbf0f0'">Nepotism</button>
+        <button class="choice" onclick="this.style.background='#fbf0f0'">Procurement Fraud</button>
+        <button class="choice" onclick="this.style.background='#fbf0f0'">Extortion</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="scenario"><div class="scenario-label">Practical Exercise 2 — Corruption in Practice</div>
+      <p>Your boss accepts a favour from a company that is currently doing business with your institution.</p></div>
+      <div class="question" style="font-size:14px; margin-top:10px;">1. Is this corruption?</div>
+      <div class="choice-grid" style="margin-bottom:15px;">
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Yes</button>
+        <button class="choice" onclick="this.style.background='#fbf0f0'">No</button>
+      </div>
+      <div class="question" style="font-size:14px;">2. What form of corruption is involved?</div>
+      <div class="choice-grid">
+        <button class="choice" onclick="this.style.background='#fbf0f0'">Bribery</button>
+        <button class="choice" onclick="this.style.background='#fbf0f0'">Embezzlement</button>
+        <button class="choice" onclick="this.style.background='#fbf0f0'">Procurement Fraud</button>
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Conflict of Interest</button>
+      </div>
+    </div>
+    <div class="action-row"><span class="section-note">Module 6 of 8</span><button class="btn" onclick="next()">Continue</button></div>`;
+}
+
+function renderScenario2(){
+  view.innerHTML = pageHead("MODULE 7 · PRACTICAL ACTIVITY","Practical Exercises 3 & 4", "") + `
+    <div class="card">
+      <div class="scenario"><div class="scenario-label">Practical Exercise 3 — The Health Centre Project</div>
+      <p>A district receives MK100 million to construct and equip a health centre. The approved expenditure includes construction materials and medical equipment. When the project is completed, however, the community discovers that some construction materials are missing and some medical equipment has not been delivered.</p></div>
+      <div class="question" style="font-size:14px; margin-top:10px;">What are the likely effects of this form of corruption?</div>
+      <div class="choice-grid" style="margin-bottom:15px;">
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Reduced investment</button>
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Poor healthcare</button>
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Poor education</button>
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Weak democracy</button>
+      </div>
+      <div class="question" style="font-size:14px;">Step 2 — Identify the consequences</div>
+      <p style="font-size:13px; color:#596b76;">Explain three ways this situation could affect ordinary citizens.</p>
+    </div>
+    <div class="card">
+      <div class="scenario"><div class="scenario-label">Practical Exercise 4 — The Health Centre Project</div>
+      <div class="question" style="font-size:14px; margin-top:10px;">How could this kind of corruption be prevented?</div>
+      <div class="choice-grid">
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Asset declaration</button>
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Keep financial records</button>
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Demand receipts</button>
+        <button class="choice" onclick="this.style.background='var(--green-soft)'">Whistleblower protection</button>
+      </div>
+      </div>
+    </div>
+    <div class="action-row"><span class="section-note">Module 7 of 8</span><button class="btn" onclick="next()">Continue</button></div>`;
+}
+
+function renderQuiz(){
+  if(quizIndex === 0) {
+    view.innerHTML = pageHead("MODULE 8 · ASSESSMENT", "END OF MODULE QUIZ", "") + `
+      <div class="card">
+        <h2>END OF MODULE QUIZ</h2>
+        <p style="font-size:14px;line-height:1.7;color:#596b76;">Please answer the ten questions that follow. You are expected to get all questions right. Should you get any question wrong, you will be given one more opportunity to answer it correctly. Should you get it wrong after the second attempt, you will be required to learn the entire module all over again.</p>
+      </div>
+      <div class="action-row"><button class="btn" onclick="startQuiz()">Begin Quiz</button></div>`;
+    return;
+  }
+
+  if(quizIndex > quizData.length) {
+    markComplete(8);
+    const score = Math.round((quizScore/quizData.length)*100);
+    view.innerHTML = `<div class="quiz-shell">${pageHead("COURSE COMPLETE","UNDERSTANDING CORRUPTION IN MALAWI","The full course covers the following modules")}
+      <div class="card result">
+        <div class="score-circle">${score}%</div>
+        <ul class="clean-list" style="text-align:left; display:inline-block; margin-bottom:20px;">
+          <li style="border:none; padding:4px 0;">1. Rethinking Corruption</li>
+          <li style="border:none; padding:4px 0;">2. Values and Corruption</li>
+          <li style="border:none; padding:4px 0;">3. Systems that encourage Corruption</li>
+          <li style="border:none; padding:4px 0;">4. Personal Integrity under Pressure</li>
+          <li style="border:none; padding:4px 0;">5. Culture versus Ethics in Corruption</li>
+          <li style="border:none; padding:4px 0;">6. Justifying Corruption</li>
+          <li style="border:none; padding:4px 0;">7. From Awareness to Action</li>
+        </ul>
+        <h2>UNDERSTANDING CORRUPTION IN MALAWI</h2>
+        <a href="#" class="btn" style="text-decoration:none; display:inline-block; margin-top:10px;">Click HERE to Access the Course</a>
+      </div>
+      </div>`;
+    return;
+  }
+
+  const q = quizData[quizIndex - 1];
+  const pct = Math.round(((quizIndex - 1)/quizData.length)*100);
+  view.innerHTML=`<div class="quiz-shell">
+    ${pageHead("MODULE 8 · ASSESSMENT","END OF MODULE QUIZ","")}
+    <div class="card">
+      <div class="quiz-progress"><span>Question ${quizIndex} of ${quizData.length}</span><strong>${pct}% complete</strong></div>
+      <div class="quiz-track"><div class="quiz-fill" style="width:${pct}%"></div></div>
+      <div class="question">${q.q}</div>
+      <div id="quizOptions">${q.options.map((o,i)=>`<button class="quiz-option" onclick="answerQuiz(${i})">${o}</button>`).join("")}</div>
+      <div id="quizFeedback" class="feedback"></div>
+      <div class="action-row"><span class="section-note">Select one answer.</span><button id="quizNext" class="btn" style="display:none" onclick="nextQuiz()">Next question</button></div>
+    </div>
+  </div>`;
 }
 
 function startQuiz() {
-    isQuizMode = true;
-    currentQuizQuestion = 0;
-    questionAttempts = 0;
-    renderSlide();
+  quizIndex = 1;
+  quizScore = 0;
+  renderQuiz();
 }
 
-// ============================================================
-// DIAGNOSTIC ENGINE – Practical Exercise 1 & 2
-// ============================================================
-function renderDiagnosticOne() {
-    // Play system alert
-    const alertAudio = document.getElementById('alert-audio');
-    if (alertAudio) alertAudio.play().catch(() => {});
-
-    const modalHTML = `
-        <div id="diagnostic-modal" class="modal-overlay active">
-            <div class="modal-content">
-                <div class="diagnostic-header">
-                    <div class="pulse-dot"></div>
-                    SYSTEM ALERT: PRACTICAL EXERCISE 1 — Corruption in Practice
-                </div>
-                <p class="scenario">
-                    You are working in a public institution. Your department is responsible for purchasing goods and services using public money. A supplier offers you money to ensure that their company wins a contract.
-                </p>
-                <h3>1. Is this corruption?</h3>
-                <div class="btn-grid" id="step-1-btns">
-                    <button class="btn btn-outline" onclick="handleDiagnosticStepOne(true, 1)">Yes</button>
-                    <button class="btn btn-outline" onclick="handleDiagnosticStepOne(false, 1)">No</button>
-                </div>
-                <div id="diagnostic-step-2" class="diagnostic-step">
-                    <h3>2. What form of corruption is involved?</h3>
-                    <div class="btn-grid">
-                        <button class="btn btn-outline-secondary" onclick="handleDiagnosticStepTwo('Bribery', 'Bribery')">Bribery</button>
-                        <button class="btn btn-outline-secondary" onclick="handleDiagnosticStepTwo('Nepotism', 'Bribery')">Nepotism</button>
-                        <button class="btn btn-outline-secondary" onclick="handleDiagnosticStepTwo('Procurement Fraud', 'Bribery')">Procurement Fraud</button>
-                        <button class="btn btn-outline-secondary" onclick="handleDiagnosticStepTwo('Extortion', 'Bribery')">Extortion</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
+function answerQuiz(i){
+  const q = quizData[quizIndex - 1];
+  const opts = [...document.querySelectorAll(".quiz-option")];
+  opts.forEach(x=>x.disabled=true);
+  
+  const fb = document.getElementById("quizFeedback");
+  if(i === q.correct){
+    quizScore++;
+    opts[i].classList.add("correct");
+    fb.className = "feedback show good";
+    fb.textContent = "Correct. " + q.feedback;
+  }else{
+    opts[i].classList.add("wrong");
+    opts[q.correct].classList.add("correct");
+    fb.className = "feedback show bad";
+    fb.textContent = "Incorrect. " + q.feedback;
+  }
+  document.getElementById("quizNext").style.display="inline-block";
 }
 
-function renderDiagnosticTwo() {
-    const alertAudio = document.getElementById('alert-audio');
-    if (alertAudio) alertAudio.play().catch(() => {});
-
-    const modalHTML = `
-        <div id="diagnostic-modal" class="modal-overlay active">
-            <div class="modal-content">
-                <div class="diagnostic-header">
-                    <div class="pulse-dot"></div>
-                    SYSTEM ALERT: PRACTICAL EXERCISE 2 — Corruption in Practice
-                </div>
-                <p class="scenario">
-                    Your boss accepts a favour from a company that is currently doing business with your institution.
-                </p>
-                <h3>1. Is this corruption?</h3>
-                <div class="btn-grid" id="step-1-btns">
-                    <button class="btn btn-outline" onclick="handleDiagnosticStepOne(true, 2)">Yes</button>
-                    <button class="btn btn-outline" onclick="handleDiagnosticStepOne(false, 2)">No</button>
-                </div>
-                <div id="diagnostic-step-2" class="diagnostic-step">
-                    <h3>2. What form of corruption is involved?</h3>
-                    <div class="btn-grid">
-                        <button class="btn btn-outline-secondary" onclick="handleDiagnosticStepTwo('Bribery', 'Conflict of Interest')">Bribery</button>
-                        <button class="btn btn-outline-secondary" onclick="handleDiagnosticStepTwo('Embezzlement', 'Conflict of Interest')">Embezzlement</button>
-                        <button class="btn btn-outline-secondary" onclick="handleDiagnosticStepTwo('Procurement Fraud', 'Conflict of Interest')">Procurement Fraud</button>
-                        <button class="btn btn-outline-secondary" onclick="handleDiagnosticStepTwo('Conflict of Interest', 'Conflict of Interest')">Conflict of Interest</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
+function nextQuiz(){
+  quizIndex++;
+  renderQuiz();
 }
 
-function handleDiagnosticStepOne(isCorruption, exerciseNumber) {
-    if (isCorruption) {
-        const btns = document.getElementById('step-1-btns');
-        btns.style.opacity = '0.45';
-        btns.style.pointerEvents = 'none';
-        document.getElementById('diagnostic-step-2').style.display = 'block';
-    } else {
-        showFeedback("Incorrect assessment. Review the definition of corruption: it is the abuse of entrusted power for private gain.", false);
-    }
-}
-
-function handleDiagnosticStepTwo(answer, correctAnswer) {
-    if (answer === correctAnswer) {
-        showFeedback(`Diagnostic Complete: ${correctAnswer} identified.`, true);
-        setTimeout(() => {
-            const modal = document.getElementById('diagnostic-modal');
-            if (modal) modal.remove();
-            nextSlide();
-        }, 1200);
-    } else {
-        showFeedback("Incorrect categorization. Re-analyze the scenario.", false);
-    }
-}
-
-// ============================================================
-// DRAG AND DROP – Practical Exercise 3 (Health Centre Project)
-// ============================================================
-function renderDragAndDropExercise() {
-    appContainer.innerHTML = `
-        <div class="exercise-badge">PRACTICAL EXERCISE 3</div>
-        <h1 class="exercise-title">The Health Centre Project</h1>
-        <p class="scenario-text">
-            A district receives MK100 million to construct and equip a health centre. The approved expenditure includes construction materials and medical equipment. When the project is completed, however, the community discovers that some construction materials are missing and some medical equipment has not been delivered.
-        </p>
-
-        <div class="exercise-steps">
-            <div class="step-card">
-                <h3>Step 1 — Identify likely effects</h3>
-                <p>What are the likely effects of this form of corruption?</p>
-                <div class="chip-group">
-                    <span class="chip">Reduced investment</span>
-                    <span class="chip">Poor healthcare</span>
-                    <span class="chip">Poor education</span>
-                    <span class="chip">Weak democracy</span>
-                </div>
-            </div>
-
-            <div class="step-card">
-                <h3>Step 2 — Identify the consequences</h3>
-                <p>Explain three ways this situation could affect ordinary citizens. Think about:</p>
-                <ul class="content-list compact">
-                    <li>• Public money</li>
-                    <li>• Healthcare</li>
-                    <li>• Infrastructure</li>
-                    <li>• Trust in government</li>
-                </ul>
-            </div>
-        </div>
-
-        <h3 class="solution-heading">Step 3 — Design the solution</h3>
-        <p class="scenario-text">
-            You have been asked to prevent this from happening again. Drag the correct prevention measures into the solution matrix. Your recommendations should include measures relating to Transparency, Procurement, Financial control, Accountability and Reporting suspected corruption.
-        </p>
-
-        <div class="dnd-container">
-            <div id="source-zone" class="drop-zone">
-                <div class="drop-zone-title">Available Prevention Measures</div>
-                <div class="draggable-item" draggable="true" id="item1">Keep financial records</div>
-                <div class="draggable-item" draggable="true" id="item2">Secret procurement</div>
-                <div class="draggable-item" draggable="true" id="item3">Whistleblower protection</div>
-                <div class="draggable-item" draggable="true" id="item4">Awarding contracts without competition</div>
-                <div class="draggable-item" draggable="true" id="item5">Asset declaration</div>
-                <div class="draggable-item" draggable="true" id="item6">Demand receipts</div>
-                <div class="draggable-item" draggable="true" id="item7">Transparent procurement</div>
-            </div>
-            <div id="target-zone" class="drop-zone">
-                <div class="drop-zone-title">Required Solutions (Drag the correct measures here)</div>
-            </div>
-        </div>
-        <button id="verify-btn" class="btn" style="margin-top: 24px; display: none;" onclick="verifyDragAndDrop()">Verify Systems</button>
-    `;
-    initializeDragAndDrop();
-}
-
-function initializeDragAndDrop() {
-    const draggables = document.querySelectorAll('.draggable-item');
-    const dropZones = document.querySelectorAll('.drop-zone');
-    const targetZone = document.getElementById('target-zone');
-    const verifyBtn = document.getElementById('verify-btn');
-
-    draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', (e) => {
-            draggable.classList.add('dragging');
-            e.dataTransfer.setData('text/plain', draggable.id);
-        });
-        draggable.addEventListener('dragend', () => {
-            draggable.classList.remove('dragging');
-            const count = targetZone.querySelectorAll('.draggable-item').length;
-            verifyBtn.style.display = count > 0 ? 'block' : 'none';
-        });
-    });
-
-    dropZones.forEach(zone => {
-        zone.addEventListener('dragover', e => {
-            e.preventDefault();
-            zone.classList.add('drag-over');
-        });
-        zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-        zone.addEventListener('drop', e => {
-            e.preventDefault();
-            zone.classList.remove('drag-over');
-            const id = e.dataTransfer.getData('text/plain');
-            const el = document.getElementById(id);
-            if (el) zone.appendChild(el);
-        });
-    });
-}
-
-function verifyDragAndDrop() {
-    const targetZone = document.getElementById('target-zone');
-    const dropped = Array.from(targetZone.querySelectorAll('.draggable-item')).map(i => i.id);
-
-    // Correct measures from the PowerPoint context
-    const correctIds = ['item1', 'item3', 'item5', 'item6', 'item7'];
-
-    const allCorrect = correctIds.every(id => dropped.includes(id)) &&
-                       !dropped.includes('item2') &&
-                       !dropped.includes('item4');
-
-    if (allCorrect && dropped.length >= 3) {
-        showFeedback("Systems Verified. Optimal solutions deployed.", true);
-        setTimeout(() => nextSlide(), 1100);
-    } else {
-        showFeedback("System Warning: Sub-optimal measures detected. Re-evaluate your solutions. Focus on transparency, financial control, accountability and reporting.", false);
-        setTimeout(() => renderDragAndDropExercise(), 1600);
-    }
-}
-
-// ============================================================
-// PRACTICAL EXERCISE 4
-// ============================================================
-function renderExerciseFour() {
-    appContainer.innerHTML = `
-        <div class="exercise-badge">PRACTICAL EXERCISE 4</div>
-        <h1 class="exercise-title">The Health Centre Project — Prevention</h1>
-        <p class="scenario-text">
-            How could this kind of corruption be prevented?
-        </p>
-        <p class="scenario-text" style="margin-bottom: 28px;">
-            Select all the measures that should be introduced:
-        </p>
-
-        <div class="checkbox-grid" id="ex4-options">
-            <label class="check-item">
-                <input type="checkbox" value="Asset declaration">
-                <span>Asset declaration</span>
-            </label>
-            <label class="check-item">
-                <input type="checkbox" value="Keep financial records">
-                <span>Keep financial records</span>
-            </label>
-            <label class="check-item">
-                <input type="checkbox" value="Demand receipts">
-                <span>Demand receipts</span>
-            </label>
-            <label class="check-item">
-                <input type="checkbox" value="Whistleblower protection">
-                <span>Whistleblower protection</span>
-            </label>
-            <label class="check-item">
-                <input type="checkbox" value="Secret procurement">
-                <span>Secret procurement</span>
-            </label>
-            <label class="check-item">
-                <input type="checkbox" value="Awarding contracts without competition">
-                <span>Awarding contracts without competition</span>
-            </label>
-        </div>
-
-        <button class="btn" style="margin-top: 28px;" onclick="verifyExerciseFour()">Verify Prevention Measures</button>
-    `;
-}
-
-function verifyExerciseFour() {
-    const checked = Array.from(document.querySelectorAll('#ex4-options input:checked')).map(i => i.value);
-    const correct = [
-        'Asset declaration',
-        'Keep financial records',
-        'Demand receipts',
-        'Whistleblower protection'
-    ];
-
-    const isCorrect = correct.every(c => checked.includes(c)) &&
-                      !checked.includes('Secret procurement') &&
-                      !checked.includes('Awarding contracts without competition');
-
-    if (isCorrect) {
-        showFeedback("Correct. These measures strengthen transparency, financial control and accountability.", true);
-        setTimeout(() => nextSlide(), 1200);
-    } else {
-        showFeedback("Not quite. Review the individual and organizational actions that prevent corruption.", false);
-    }
-}
-
-// ============================================================
-// QUIZ ENGINE
-// ============================================================
-function renderQuiz() {
-    if (currentQuizQuestion >= quizData.length) {
-        // Finished
-        appContainer.innerHTML = `
-            <h1>UNDERSTANDING CORRUPTION IN MALAWI</h1>
-            <p>Congratulations. You have completed the demo module.</p>
-            <p>The full course covers the following modules:</p>
-            <ol class="modules-list">
-                <li><span class="module-num">1</span> Rethinking Corruption</li>
-                <li><span class="module-num">2</span> Values and Corruption</li>
-                <li><span class="module-num">3</span> Systems that encourage Corruption</li>
-                <li><span class="module-num">4</span> Personal Integrity under Pressure</li>
-                <li><span class="module-num">5</span> Culture versus Ethics in Corruption</li>
-                <li><span class="module-num">6</span> Justifying Corruption</li>
-                <li><span class="module-num">7</span> From Awareness to Action</li>
-            </ol>
-            <div class="cta-box">
-                <button class="btn btn-primary">Click HERE to Access the Course</button>
-            </div>
-        `;
-        return;
-    }
-
-    const q = quizData[currentQuizQuestion];
-
-    let html = `
-        <div class="quiz-header">
-            <span class="quiz-badge">END OF MODULE QUIZ</span>
-            <span class="attempt-label">Attempt ${questionAttempts + 1} of 2 for this question</span>
-        </div>
-        <h1 class="quiz-question">${q.question}</h1>
-        <div class="options-list">
-    `;
-
-    q.options.forEach((opt, index) => {
-        html += `
-            <button class="btn btn-option" onclick="checkAnswer(${index})">
-                ${opt}
-            </button>
-        `;
-    });
-
-    html += `</div>
-        <p class="quiz-note">
-            You are expected to get all questions right. Should you get any question wrong, you will be given one more opportunity to answer it correctly. Should you get it wrong after the second attempt, you will be required to learn the entire module all over again.
-        </p>
-    `;
-
-    appContainer.innerHTML = html;
-}
-
-function checkAnswer(selectedIndex) {
-    const q = quizData[currentQuizQuestion];
-
-    if (selectedIndex === q.correctAnswer) {
-        questionAttempts = 0;
-        currentQuizQuestion++;
-        showFeedback("Correct.", true);
-        setTimeout(() => renderQuiz(), 900);
-    } else {
-        questionAttempts++;
-        if (questionAttempts >= 2) {
-            showFeedback("Maximum attempts reached. Module restarting.", false);
-            setTimeout(() => {
-                isQuizMode = false;
-                currentSlide = 0;
-                currentQuizQuestion = 0;
-                questionAttempts = 0;
-                renderSlide();
-            }, 1400);
-        } else {
-            showFeedback("Incorrect. You have one attempt remaining.", false);
-            setTimeout(() => renderQuiz(), 1100);
-        }
-    }
-}
-
-// ============================================================
-// FEEDBACK TOAST
-// ============================================================
-function showFeedback(message, isSuccess) {
-    // Remove any existing toast
-    const old = document.querySelector('.feedback-toast');
-    if (old) old.remove();
-
-    const toast = document.createElement('div');
-    toast.className = `feedback-toast ${isSuccess ? 'success' : 'error'}`;
-    toast.textContent = message;
-    document.body.appendChild(toast);
-
-    // Trigger animation
-    requestAnimationFrame(() => toast.classList.add('show'));
-
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-    }, 2200);
-}
-
-// ============================================================
-// INIT
-// ============================================================
-renderSlide();
+renderNav();
+renderCurrent();
